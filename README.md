@@ -14,21 +14,21 @@ where you can set the calibration info (but most ROS drivers include a reasonabl
 
 ## Edit config info in `~/catkin_ws/src/dope/config/config_pose.yaml`
 * `topic_camera`: RGB topic to listen to
-    * `topic_camera_info`: camera info topic to listen to
-    * `topic_publishing`: topic namespace for publishing
-    * `input_is_rectified`: Whether the input images are rectified. It is strongly suggested to use a rectified input topic.
-    * `downscale_height`: If the input image is larger than this, scale it down to this pixel height. Very large input images eat up all the GPU memory and slow down inference. Also, DOPE works best when the object size (in pixels) has appeared in the training data (which is downscaled to 400 px). For these reasons, downscaling large input images to something reasonable (e.g., 400-500 px) improves memory consumption, inference speed *and* recognition results.
-    * `weights`: dictionary of object names and there weights path name, **comment out any line to disable detection/estimation of that object**
-    * `dimensions`: dictionary of dimensions for the objects  (key values must match the `weights` names)
-    * `class_ids`: dictionary of class ids to be used in the messages published on the `/dope/detected_objects` topic (key values must match the `weights` names)
-    * `draw_colors`: dictionary of object colors (key values must match the `weights` names)
-    * `model_transforms`: dictionary of transforms that are applied to the pose before publishing (key values must match the `weights` names)
-    * `meshes`: dictionary of mesh filenames for visualization (key values must match the `weights` names)
-    * `mesh_scales`: dictionary of scaling factors for the visualization meshes (key values must match the `weights` names)
-    * `thresh_angle`: undocumented
-    * `thresh_map`: undocumented
-    * `sigma`: undocumented
-    * `thresh_points`: Thresholding the confidence for object detection; increase this value if you see too many false positives, reduce it if  objects are not detected.
+* `topic_camera_info`: camera info topic to listen to
+* `topic_publishing`: topic namespace for publishing
+* `input_is_rectified`: Whether the input images are rectified. It is strongly suggested to use a rectified input topic.
+* `downscale_height`: If the input image is larger than this, scale it down to this pixel height. Very large input images eat up all the GPU memory and slow down inference. Also, DOPE works best when the object size (in pixels) has appeared in the training data (which is downscaled to 400 px). For these reasons, downscaling large input images to something reasonable (e.g., 400-500 px) improves memory consumption, inference speed *and* recognition results.
+* `weights`: dictionary of object names and there weights path name, **comment out any line to disable detection/estimation of that object**
+* `dimensions`: dictionary of dimensions for the objects  (key values must match the `weights` names)
+* `class_ids`: dictionary of class ids to be used in the messages published on the `/dope/detected_objects` topic (key values must match the `weights` names)
+* `draw_colors`: dictionary of object colors (key values must match the `weights` names)
+* `model_transforms`: dictionary of transforms that are applied to the pose before publishing (key values must match the `weights` names)
+* `meshes`: dictionary of mesh filenames for visualization (key values must match the `weights` names)
+* `mesh_scales`: dictionary of scaling factors for the visualization meshes (key values must match the `weights` names)
+* `thresh_angle`: undocumented
+* `thresh_map`: undocumented
+* `sigma`: undocumented
+* `thresh_points`: Thresholding the confidence for object detection; increase this value if you see too many false positives, reduce it if  objects are not detected.
 
 ## Start DOPE node
 ```roslaunch dope dope.launch [config:=/path/to/my_config.yaml]  # Config file is optional; default is `config_pose.yaml` ```
