@@ -31,6 +31,7 @@ where you can set the calibration info (but most ROS drivers include a reasonabl
 * `thresh_points`: Thresholding the confidence for object detection; increase this value if you see too many false positives, reduce it if  objects are not detected.
 
 ## Start DOPE node
+Download [the weights](https://drive.google.com/open?id=1DfoA3m_Bm0fW8tOWXGVxi4ETlLEAgmcg) and save them to the `weights` folder, i.e., `~/catkin_ws/src/dope/weights/`.
 ```roslaunch dope dope.launch [config:=/path/to/my_config.yaml]  # Config file is optional; default is `config_pose.yaml` ```
 
 ## Debugging
