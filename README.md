@@ -12,6 +12,16 @@ The camera must publish a correct `camera_info` topic to enable DOPE to compute 
 Basically all ROS drivers have a `camera_info_url` parameter
 where you can set the calibration info (but most ROS drivers include a reasonable default).
 
+## Run the docker image
+`git pull`  
+Download [the weights](https://drive.google.com/open?id=1DfoA3m_Bm0fW8tOWXGVxi4ETlLEAgmcg) and save them to a `weights` folder.
+```docker run --gpus all -it --privileged --network=host -v weights:/root/catkin_ws/src/dope/weights:rw  -v /tmp/.X11-unix:/tmp/.X11-unix:rw --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" nvidia-dope:kinetic-v1 /bin/bash```  
+Go to `/root/catkin_ws`.  
+`source devel/setup.bash`
+
+
+
+
 ## Edit config info in `~/catkin_ws/src/dope/config/config_pose.yaml`
 * `topic_camera`: RGB topic to listen to
 * `topic_camera_info`: camera info topic to listen to
@@ -31,7 +41,6 @@ where you can set the calibration info (but most ROS drivers include a reasonabl
 * `thresh_points`: Thresholding the confidence for object detection; increase this value if you see too many false positives, reduce it if  objects are not detected.
 
 ## Start DOPE node
-Download [the weights](https://drive.google.com/open?id=1DfoA3m_Bm0fW8tOWXGVxi4ETlLEAgmcg) and save them to the `weights` folder, i.e., `~/catkin_ws/src/dope/weights/`.  
 ```roslaunch dope dope.launch [config:=/path/to/my_config.yaml]  # Config file is optional; default is `config_pose.yaml` ```
 
 ## Debugging
