@@ -13,7 +13,7 @@ Basically all ROS drivers have a `camera_info_url` parameter
 where you can set the calibration info (but most ROS drivers include a reasonable default).
 
 ## Run the docker image
-`git pull`  
+`docker pull registry.gitlab.com/haiandaidi/docker_dope:2020_05_26`  
 Download [the weights](https://drive.google.com/open?id=1DfoA3m_Bm0fW8tOWXGVxi4ETlLEAgmcg) and save them to a `weights` folder.  
 ```
 docker run --gpus all -it --privileged --network=host -v $PWD/weights:/root/catkin_ws/src/dope/weights:rw  -v /tmp/.X11-unix:/tmp/.X11-unix:rw --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" nvidia-dope:kinetic-v1 /bin/bash
