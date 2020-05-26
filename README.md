@@ -43,7 +43,8 @@ Go to `catkin_ws`.
 * `thresh_points`: Thresholding the confidence for object detection; increase this value if you see too many false positives, reduce it if  objects are not detected.
 
 ## Start DOPE node
-```roslaunch dope dope.launch [config:=/path/to/my_config.yaml]  # Config file is optional; default is `config_pose.yaml` ```
+`roslaunch dope dope.launch [config:=/path/to/my_config.yaml]`
+Config file is optional; default is `config_pose.yaml`
 
 ## Debugging
 
